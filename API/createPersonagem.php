@@ -25,8 +25,6 @@
 	$makes = mysqli_fetch_array(mysqli_query($conexao, $queryGetMake));
 	$detalhes = mysqli_fetch_array(mysqli_query($conexao, $queryGetDetalhe));
 
-	insertPersonagem();
-	
 	function insertPersonagem(){
 		$pele = $peles[rand(0,sizeof($peles))];
 		$olho = $olhos[rand(0,sizeof($olhos))];
@@ -50,4 +48,6 @@
 	function insertDetalhe($personagemId, $detalheId){
 
 	}
+
+	insertPersonagem();
 ?>
