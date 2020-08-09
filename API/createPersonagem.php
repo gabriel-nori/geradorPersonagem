@@ -16,25 +16,18 @@
 		$qtdDetalhes = $_POST['qtdDetalhes'];
 	}
 
-	insertPersonagem($qtdDetalhes);
 
-	function getPele(){return mysqli_fetch_array(mysqli_query($this->conexao, $queryGetPele));}
-	function getOlhos(){return mysqli_fetch_array(mysqli_query($this->conexao, $queryGetOlhos));}
-	function getBoca(){return mysqli_fetch_array(mysqli_query($this->conexao, $queryGetBoca));}
-	function getCabelo(){return mysqli_fetch_array(mysqli_query($this->conexao, $queryGetCabelo));}
-	function getNariz(){return mysqli_fetch_array(mysqli_query($this->conexao, $queryGetNariz));}
-	function getMake(){return mysqli_fetch_array(mysqli_query($this->conexao, $queryGetMake));}
-	function getDetalhes(){return mysqli_fetch_array(mysqli_query($this->conexao, $queryGetDetalhe));}
+	$peles = mysqli_fetch_array(mysqli_query($conexao, $queryGetPele));
+	$olhos = mysqli_fetch_array(mysqli_query($conexao, $queryGetOlhos));
+	$bocas = mysqli_fetch_array(mysqli_query($conexao, $queryGetBoca));
+	$cabelos = mysqli_fetch_array(mysqli_query($conexao, $queryGetCabelo));
+	$narizes = mysqli_fetch_array(mysqli_query($conexao, $queryGetNariz));
+	$makes = mysqli_fetch_array(mysqli_query($conexao, $queryGetMake));
+	$detalhes = mysqli_fetch_array(mysqli_query($conexao, $queryGetDetalhe));
 
-	function insertPersonagem($detalhes){
-		$peles = getPele();
-		$olhos = getOlhos();
-		$bocas = getBoca();
-		$cabelos = getCabelo();
-		$narizes = getNariz();
-		$makes = getMake();
-		$detalhes = getDetalhes();
-
+	insertPersonagem();
+	
+	function insertPersonagem(){
 		$pele = $peles[rand(0,sizeof($peles))];
 		$olho = $olhos[rand(0,sizeof($olhos))];
 		$boca = $bocas[rand(0,sizeof($bocas))];
