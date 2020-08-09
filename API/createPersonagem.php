@@ -1,5 +1,6 @@
 <?php
-	require "./DB/connection.php";
+	//require "./DB/connection.php";
+	$conexao = mysqli_connect("localhost", "u179156626_admin", ">gXuR1g9xS", "u179156626_personagem") or die ("A conexão não foi executada com sucesso");
 
 	$queryGetPele = "SELECT * FROM pele";
 	$queryGetOlhos = "SELECT * FROM olhos";
