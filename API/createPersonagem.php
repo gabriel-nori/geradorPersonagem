@@ -1,6 +1,6 @@
 <?php
 	//require "./DB/connection.php";
-	$conexao = mysqli_connect("localhost", "u179156626_admin", ">gXuR1g9xS", "u179156626_personagem") or die ("A conexão não foi executada com sucesso");
+	private $conexao = mysqli_connect("localhost", "u179156626_admin", ">gXuR1g9xS", "u179156626_personagem") or die ("A conexão não foi executada com sucesso");
 
 	$queryGetPele = "SELECT * FROM pele";
 	$queryGetOlhos = "SELECT * FROM olhos";
@@ -18,13 +18,13 @@
 
 	insertPersonagem($qtdDetalhes);
 
-	function getPele(){return mysqli_fetch_array(mysqli_query($conexao, $queryGetPele));}
-	function getOlhos(){return mysqli_fetch_array(mysqli_query($conexao, $queryGetOlhos));}
-	function getBoca(){return mysqli_fetch_array(mysqli_query($conexao, $queryGetBoca));}
-	function getCabelo(){return mysqli_fetch_array(mysqli_query($conexao, $queryGetCabelo));}
-	function getNariz(){return mysqli_fetch_array(mysqli_query($conexao, $queryGetNariz));}
-	function getMake(){return mysqli_fetch_array(mysqli_query($conexao, $queryGetMake));}
-	function getDetalhes(){return mysqli_fetch_array(mysqli_query($conexao, $queryGetDetalhe));}
+	function getPele(){return mysqli_fetch_array(mysqli_query($this->conexao, $queryGetPele));}
+	function getOlhos(){return mysqli_fetch_array(mysqli_query($this->conexao, $queryGetOlhos));}
+	function getBoca(){return mysqli_fetch_array(mysqli_query($this->conexao, $queryGetBoca));}
+	function getCabelo(){return mysqli_fetch_array(mysqli_query($this->conexao, $queryGetCabelo));}
+	function getNariz(){return mysqli_fetch_array(mysqli_query($this->conexao, $queryGetNariz));}
+	function getMake(){return mysqli_fetch_array(mysqli_query($this->conexao, $queryGetMake));}
+	function getDetalhes(){return mysqli_fetch_array(mysqli_query($this->conexao, $queryGetDetalhe));}
 
 	function insertPersonagem($detalhes){
 		$peles = getPele();
