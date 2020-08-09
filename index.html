@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Gerador de personagem</title>
+		<link rel="stylesheet" type="text/css" href="./CSS/index.css">
+		<link rel="icon" href="./Media/Images/Icon/icon.png">
+		<script src="./JS/index.js"></script>
+		<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+	</head>
+	<body>
+		<div id="personagemOutput">
+			<div id="peleOutput">
+				<span class="normal">
+					Pele: 
+				</span>
+				<span id="peleSpan"></span>
+				<br>
+				<span class="normal">
+					Olhos: 
+				</span>
+				<span id="olhosSpan"></span>
+				<br>
+				<span class="normal">
+					Boca: 
+				</span>
+				<span id="bocaSpan"></span>
+				<br>
+				<span class="normal">
+					Cabelo: 
+				</span>
+				<span id="cabeloSpan"></span>
+				<br>
+				<span class="normal">
+					Nariz: 
+				</span>
+				<span id="narizSpan"></span>
+				<br>
+				<span class="normal">
+					Make: 
+				</span>
+				<span id="makeSpan"></span>
+				<br>
+				<span class="normal">
+					Detalhes: 
+				</span>
+				<span id="detalhesSpan"></span>
+				<br>
+			</div>
+			<button id="btnGerar" onclick="gerarPersonagem()">gerar personagem</button>
+		</div>
+		<div id="errorFill">
+			<div id="erroHolder">
+				<p class="errorTitle">
+					Ocorreu um erro:
+				</p>
+				<div id="error">
+					<p id="errorMessage">
+
+					</p>
+				</div>
+				<button id="btnErrorConfirm" onclick="closeError()">OK</button>
+			</div>
+		</div>
+	</body>
+</html>

@@ -14,32 +14,8 @@
 	if(isset($_POST['qtdDetalhes'])){
 		$qtdDetalhes = $_POST['qtdDetalhes'];
 	}
-	
-	/*if(isset($_POST['senha'])&&isset($_POST['nome'])&&isset($_POST['email'])){
-	    $nome=$_POST['nome'];
-	    $senha=$_POST['senha'];
-	    $email=$_POST['email'];
-	    $senha=password_hash($senha, PASSWORD_BCRYPT);
-		$query="select u179156626_anima.insert_dono('$nome','$senha','$email') as 'id';";
-		$resultado = mysqli_query($conexao, $query);	
-		if (mysqli_num_rows($resultado)!=1){
-			$dados= array("id" => -2,);
-		}
-		else{
-			while($linha=mysqli_fetch_array($resultado)){
-				$dados=array("id" => $linha['id']);
-			}
-			if($dados['id']>0){
-			    $id=$dados['id'];
-			    $stringToken=RandomString();
-			    $token=password_hash($stringToken, PASSWORD_BCRYPT);
-			    $query="update usuario set usuario_token = '$token' where usuario_id = '$id';";
-			    $resultado = mysqli_query($conexao, $query);
-			    $dados=array("id" => $id, "token" => $token);
-			}
-		}
-		echo json_encode($dados);
-	}*/
+
+	insertPersonagem($qtdDetalhes);
 
 	function getPele(){return mysqli_fetch_array(mysqli_query($conexao, $queryGetPele));}
 	function getOlhos(){return mysqli_fetch_array(mysqli_query($conexao, $queryGetOlhos));}
@@ -49,7 +25,7 @@
 	function getMake(){return mysqli_fetch_array(mysqli_query($conexao, $queryGetMake));}
 	function getDetalhes(){return mysqli_fetch_array(mysqli_query($conexao, $queryGetDetalhe));}
 
-	function insertPersonagem(){
+	function insertPersonagem($detalhes){
 		$peles = getPele();
 		$olhos = getOlhos();
 		$bocas = getBoca();
@@ -58,9 +34,23 @@
 		$makes = getMake();
 		$detalhes = getDetalhes();
 
-		$pele = sizeof($peles);
+		$pele = $peles[rand(0,sizeof($peles))];
+		$olho = $olhos[rand(0,sizeof($olhos))];
+		$boca = $bocas[rand(0,sizeof($bocas))];
+		$cabelo = $cabelos[rand(0,sizeof($cabelos))];
+		$nariz = $narizes[rand(0,sizeof($narizes))];
+		$make = $makes[rand(0,sizeof($makes))];
 
-		//echo json_encode();
+		$personagem = array(
+			"pele" => $pele['nome'],
+			"olhos" => $olho['nome'],
+			"boca" => $boca['nome'],
+			"cabelo" => $cabelo['nome'],
+			"nariz" => $nariz['nome'],
+			"make" => $make['nome']
+		);
+
+		echo json_encode($personagem);
 	}
 
 	function insertDetalhe($personagemId, $detalheId){
